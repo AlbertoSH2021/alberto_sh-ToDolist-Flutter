@@ -13,10 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Proyecto to do list en flutter',
       theme: ThemeData(
-        
+      
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'prueba de modificacion con commit'),
     );
   }
 }
