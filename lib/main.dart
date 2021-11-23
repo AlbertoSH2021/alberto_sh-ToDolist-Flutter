@@ -1,6 +1,8 @@
 import 'package:alberto_sh/tarea.dart';
 import 'package:flutter/material.dart';
 import 'package:alberto_sh/FichaTarea.dart';
+
+import 'nuevaTarea.dart';
 void main() {
   runApp( MyApp());
 }
@@ -47,7 +49,7 @@ class ListaTareasState extends State<ListaTareas>{
            final item=listaTareas[posicion];
            return new GestureDetector(
              onTap:(){
-               _editaTarea(listaTareas,this,posicion);
+               _editaTarea(listaTareas[posicion],this,posicion);
              },
              child: Dismissible(
                key: Key(item.nombre),
@@ -68,6 +70,16 @@ class ListaTareasState extends State<ListaTareas>{
          ),
      );
   }
+
+  void _editaTarea(Tarea tarea,ListaTareasState obj,int posicion){
+    Navigator.push(
+      context,MaterialPageRoute(
+      builder: (context)=>nuevaTarea(tarea,'Editar Tarea',obj,posicion),
+      ),
+      );
+      actualizarListView();
+  }
+
 
   //metodop para remover si el exto ingresado es muy largo
   void eliminar(int posicion){
