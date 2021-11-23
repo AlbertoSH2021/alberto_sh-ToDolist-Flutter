@@ -1,6 +1,6 @@
 import 'package:alberto_sh/tarea.dart';
 import 'package:flutter/material.dart';
-
+import 'package:alberto_sh/FichaTarea.dart';
 void main() {
   runApp( MyApp());
 }
@@ -59,7 +59,7 @@ class ListaTareasState extends State<ListaTareas>{
                   elevation: 2.0,
                   child: FichaTarea(
                     titulo:item.nombre,
-                    estado:item.estado,
+                    estado:item.estado, 
                   ),
                ),
              ),
