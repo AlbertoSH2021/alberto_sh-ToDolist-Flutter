@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 //clase tarea
 class Tarea {
   //va estar definido por dos estados 

@@ -2,7 +2,7 @@ import 'package:alberto_sh/tarea.dart';
 import 'package:flutter/material.dart';
 import 'package:alberto_sh/FichaTarea.dart';
 
-import 'nuevaTarea.dart';
+import 'package:alberto_sh/nuevaTarea.dart';
 void main() {
   runApp( MyApp());
 }
@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
 }
 
 class ListaTareas extends StatefulWidget{
+  const ListaTareas({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget>createState(){
     return ListaTareasState();
@@ -30,12 +32,12 @@ class ListaTareas extends StatefulWidget{
 }
 
 class ListaTareasState extends State<ListaTareas>{
-  late List<Tarea> listaTareas;
+   late List<Tarea> listaTareas;
   
   @override
   Widget build(BuildContext context) {
 
-    if(listaTareas==null) 
+    if(listaTareas==null)
     listaTareas=[];
 
      return Scaffold(
@@ -47,7 +49,7 @@ class ListaTareasState extends State<ListaTareas>{
          itemBuilder: 
          (BuildContext context, int posicion){
            final item=listaTareas[posicion];
-           return new GestureDetector(
+           return  GestureDetector(
              onTap:(){
                _editaTarea(listaTareas[posicion],this,posicion);
              },
@@ -57,7 +59,7 @@ class ListaTareasState extends State<ListaTareas>{
                         eliminar(posicion);
                         },
                child: Card(
-                  margin: EdgeInsets.all(1.0),
+                  margin: const EdgeInsets.all(1.0),
                   elevation: 2.0,
                   child: FichaTarea(
                     titulo:item.nombre,
@@ -68,8 +70,25 @@ class ListaTareasState extends State<ListaTareas>{
            );
          }
          ),
+         floatingActionButton: FloatingActionButton(
+           tooltip: "Añadir tarea",
+           child: const Icon(Icons.add),
+           onPressed: (){
+             _creartarea(this);
+           },
+         ),
      );
   }
+
+void _creartarea (ListaTareasState obj)
+{
+  Navigator.push(context, 
+  MaterialPageRoute(builder: (context)=>nuevaTarea(Tarea("",""),"añadir tarea",obj)),
+    );
+  actualizarListView();
+} 
+
+
 
   void _editaTarea(Tarea tarea,ListaTareasState obj,int posicion){
     Navigator.push(
