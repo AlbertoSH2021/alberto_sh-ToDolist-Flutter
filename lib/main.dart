@@ -1,8 +1,11 @@
-import 'package:alberto_sh/tarea.dart';
-import 'package:flutter/material.dart';
 import 'package:alberto_sh/FichaTarea.dart';
+import 'package:flutter/material.dart';
 
 import 'package:alberto_sh/nuevaTarea.dart';
+import 'package:alberto_sh/tarea.dart';
+
+
+//modificacion en la clase lista de tarea en el metodo añadir tarea
 void main() {
   runApp( MyApp());
 }
@@ -17,16 +20,15 @@ class MyApp extends StatelessWidget {
       
         primarySwatch: Colors.blue,
       ),
-      home: ListaTareas(),
+      home:  ListaTareas(),
     );
   }
 }
 
 class ListaTareas extends StatefulWidget{
-  const ListaTareas({Key? key}) : super(key: key);
-
+  
   @override
-  State<StatefulWidget>createState(){
+  State<StatefulWidget> createState(){
     return ListaTareasState();
   }
 }
@@ -39,11 +41,15 @@ class ListaTareasState extends State<ListaTareas>{
 
     if(listaTareas==null)
     listaTareas=[];
+    
 
      return Scaffold(
        appBar: AppBar(
           title:const Text('Lista de Tarea'),
        ),
+
+
+       
        body: ListView.builder(
          itemCount: listaTareas.length,
          itemBuilder: 
@@ -55,9 +61,8 @@ class ListaTareasState extends State<ListaTareas>{
              },
              child: Dismissible(
                key: Key(item.nombre),
-               onDismissed:(direction) {
-                        eliminar(posicion);
-                        },
+               onDismissed:(direction)  {eliminar(posicion);},
+                        
                child: Card(
                   margin: const EdgeInsets.all(1.0),
                   elevation: 2.0,
@@ -102,7 +107,7 @@ void _creartarea (ListaTareasState obj)
 
   //metodop para remover si el exto ingresado es muy largo
   void eliminar(int posicion){
-    this.listaTareas.remove(posicion);
+    this.listaTareas.removeAt(posicion);
 
     actualizarListView();
   } 

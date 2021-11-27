@@ -11,8 +11,7 @@ class nuevaTarea extends StatefulWidget {
   int posicion;
 
   //constructor
-  nuevaTarea(this.tarea, this.appBartitle, this.listaTareasState,
-      [this.posicion = -1]);
+  nuevaTarea(this.tarea, this.appBartitle, this.listaTareasState,[this.posicion = -1]);
   @override
   State<StatefulWidget> createState() {
     return nuevaTareaState(
@@ -27,8 +26,7 @@ class nuevaTareaState extends State<nuevaTarea> {
   int posicion;
   bool marcado = false;
 
-  nuevaTareaState(
-      this.tarea, this.titulo, this.listaTareasState, this.posicion);
+  nuevaTareaState(this.tarea, this.titulo, this.listaTareasState, this.posicion);
 
   TextEditingController tareaController = new TextEditingController();
   @override
@@ -46,6 +44,10 @@ class nuevaTareaState extends State<nuevaTarea> {
         ),
         title: Text(titulo),
       ),
+
+
+
+
       body: Column(
         children: <Widget>[
           Padding(
@@ -53,13 +55,13 @@ class nuevaTareaState extends State<nuevaTarea> {
             child: _estaEditando()  ? CheckboxListTile(
                     title: Text("Completada"),
                     value: marcado,
-                    onChanged: (bool? valor) {
+                    onChanged: ( valor) {                 //bool valor
                       setState(() {
                         marcado = valor!;
                       });
                     },
                   )
-                : Container(height:2),
+                : Container(height:2,)
                 
           ),
           Padding(
@@ -99,16 +101,42 @@ class nuevaTareaState extends State<nuevaTarea> {
       }
     }
     tarea.nombre = tareaController.text;
+    if(_comprobarNoNull()){
+      if(!_estaEditando())
+      listaTareasState.listaTareas.add(tarea);
+      else
+      listaTareasState.listaTareas[posicion]=tarea;
+      listaTareasState.actualizarListView();
+      Navigator.pop(context);
+      mostrarSnackBar("Tarea guardada correctamente");
+    };
   }
+    bool _comprobarNoNull(){
+      bool res=true;
+      if(tareaController.text.isEmpty){
+        mostrarSnackBar("La tarea es obligatoria");
+        res=false;
+      }
+      return res;
+    }
+
+    void mostrarSnackBar(String mensaje){
+      final snackBar=SnackBar(
+        content:Text(mensaje),
+        duration:Duration(seconds: 1,milliseconds: 500),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+
 
   void actualizatTarea() {
     tarea.nombre = tareaController.text;
   }
 
   bool _estaEditando() {
-    bool editando = false;
+    bool editando = true;
     if (this.posicion == -1)
-     editando = true;
+     editando = false;
     return editando;
   }
 }

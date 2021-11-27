@@ -7,10 +7,12 @@ class FichaTarea extends StatelessWidget {
   final String estado;
 //constructor: le pasamos dos parametros el titulo y el estado
   FichaTarea({
-     Key? key,
+     Key? key,                                            // key key                 
     required this.titulo,
     required this.estado,
   }) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
