@@ -7,7 +7,7 @@ class FichaTarea extends StatelessWidget {
   final String estado;
 //constructor: le pasamos dos parametros el titulo y el estado
   FichaTarea({
-     Key? key,                                            // key key                 
+     Key? key,                                            // key key   , ....              
     required this.titulo,
     required this.estado,
   }) : super(key: key);

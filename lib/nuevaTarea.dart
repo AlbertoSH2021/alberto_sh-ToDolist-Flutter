@@ -55,7 +55,8 @@ class nuevaTareaState extends State<nuevaTarea> {
             child: _estaEditando()  ? CheckboxListTile(
                     title: Text("Completada"),
                     value: marcado,
-                    onChanged: ( valor) {                 //bool valor
+                    onChanged: ( valor) {                 //bool valor  tengo problemas para que me reconozca las varibles del metodo constructor, 
+                                                              
                       setState(() {
                         marcado = valor!;
                       });

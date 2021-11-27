@@ -9,10 +9,13 @@ import 'package:alberto_sh/tarea.dart';
 void main() {
   runApp( MyApp());
 }
+
 /*El proyecto no reconoce los metodos y la variables para anñadir una nueva tarea, 
 por tal razon me voe obligado a suspender el desarrollo de la app y culminar
  el proyecto en php. Si lee esto Ingeniero le pido su comprension, 
 tenia buenas intenciones en tratar de desarrollar el todolist en FLuttet pero aun caresco de conocimiento*/
+
+
 class MyApp extends StatelessWidget {
   
   @override

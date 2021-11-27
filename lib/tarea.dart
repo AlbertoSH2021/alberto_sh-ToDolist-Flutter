@@ -5,7 +5,7 @@ class Tarea {
   //va estar definido por dos estados 
   //el subrayado delante de un atributo significa que es privado
   String _nombre; 
-  String _estado;
+  String _estado;         //el error freceunte que me aarroja es que falta inicializar las variables
   //constructor
   Tarea(this._nombre,this._estado);
 
